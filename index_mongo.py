@@ -9,6 +9,14 @@
 from pymongo import MongoClient  # import mongo client to connect
 from db_connection_mongo import *
 
+def print_menu():
+    print("")
+    print("######### Menu ##############")
+    print("#a - Create a document")
+    print("#b - Update a document")
+    print("#c - Delete a document.")
+    print("#d - Output the inverted index ordered by term.")
+    print("#q - Quit")
 
 if __name__ == '__main__':
 
@@ -30,44 +38,37 @@ if __name__ == '__main__':
     option = ""
     while option != "q":
 
-          print("")
-          option = input("Enter a menu choice: ")
+        # print_menu()
+        print("")
+        option = input("Enter a menu choice: ")
 
-          if (option == "a"):
+        if (option == "a"):
+          docId = input("Enter the ID of the document: ")
+          docText = input("Enter the text of the document: ")
+          docTitle = input("Enter the title of the document: ")
+          docDate = input("Enter the date of the document: ")
+          docCat = input("Enter the category of the document: ")
+          createDocument(documents, docId, docText, docTitle, docDate, docCat)
 
-              docId = input("Enter the ID of the document: ")
-              docText = input("Enter the text of the document: ")
-              docTitle = input("Enter the title of the document: ")
-              docDate = input("Enter the date of the document: ")
-              docCat = input("Enter the category of the document: ")
+        elif (option == "b"):
+          docId = input("Enter the ID of the document: ")
+          docText = input("Enter the text of the document: ")
+          docTitle = input("Enter the title of the document: ")
+          docDate = input("Enter the date of the document: ")
+          docCat = input("Enter the category of the document: ")
+          updateDocument(documents, docId, docText, docTitle, docDate, docCat)
 
-              createDocument(documents, docId, docText, docTitle, docDate, docCat)
+        elif (option == "c"):
+          docId = input("Enter the document ID to be deleted: ")
+          deleteDocument(documents, docId)
 
-          elif (option == "b"):
+        elif (option == "d"):
+          index = getIndex(documents)
 
-              docId = input("Enter the ID of the document: ")
-              docText = input("Enter the text of the document: ")
-              docTitle = input("Enter the title of the document: ")
-              docDate = input("Enter the date of the document: ")
-              docCat = input("Enter the category of the document: ")
+        elif (option == "q"):
+           print("Leaving the application ... ")
 
-              updateDocument(documents, docId, docText, docTitle, docDate, docCat)
+        else:
+           print("Invalid Choice.")
 
-          elif (option == "c"):
 
-              docId = input("Enter the document ID to be deleted: ")
-
-              deleteDocument(documents, docId)
-
-          elif (option == "d"):
-
-              index = getIndex(documents)
-              print(index)
-
-          elif (option == "q"):
-
-               print("Leaving the application ... ")
-
-          else:
-
-               print("Invalid Choice.")
