@@ -1,13 +1,13 @@
 #-------------------------------------------------------------------------
-# AUTHOR: your name
-# FILENAME: title of the source file
-# SPECIFICATION: description of the program
+# AUTHOR: Sean Archer
+# FILENAME: index_mongo.py, db_connection_mongo.py
+# SPECIFICATION: Takes user input to create documents. Generates inverted index of terms.
 # FOR: CS 5180- Assignment #2
-# TIME SPENT: how long it took you to complete the assignment
+# TIME SPENT: 5 hours
 #-----------------------------------------------------------*/
 
-from pymongo import MongoClient  # import mongo client to connect
 from db_connection_mongo import *
+import pprint
 
 def print_menu():
     print("")
@@ -38,7 +38,6 @@ if __name__ == '__main__':
     option = ""
     while option != "q":
 
-        # print_menu()
         print("")
         option = input("Enter a menu choice: ")
 
@@ -64,6 +63,7 @@ if __name__ == '__main__':
 
         elif (option == "d"):
           index = getIndex(documents)
+          pprint.pprint(index)
 
         elif (option == "q"):
            print("Leaving the application ... ")

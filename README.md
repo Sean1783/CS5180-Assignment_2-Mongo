@@ -1,1 +1,1 @@
-Starter code - not complete yet.
+Menu option (D) outputs inverted index with terms mapped to {title : count} maps. 
